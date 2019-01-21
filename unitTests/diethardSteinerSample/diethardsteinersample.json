@@ -1,0 +1,10 @@
+{
+  "name" : "diethardSteinerSample",
+  "environmentHomeFolder" : "/home/bjackson/src/usbrandon/kettle-qa/unitTests/diethardSteinerSample",
+  "metaStoreBaseFolder" : "${ENVIRONMENT_HOME}",
+  "unitTestsBasePath" : "${ENVIRONMENT_HOME}",
+  "dataSetsCsvFolder" : "${ENVIRONMENT_HOME}/unit-test-datasets",
+  "enforcingExecutionInHome" : true,
+  "autoSavingSpoonSession" : true,
+  "autoRestoringSpoonSession" : true
+}

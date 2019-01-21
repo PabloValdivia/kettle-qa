@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<element>
+   <id>diethardSteinerSample</id>
+   <value></value>
+   <type>String</type>
+   <children>
+      <child>
+         <id>sessionFiles</id>
+         <value></value>
+         <type>String</type>
+      </child>
+      <child>
+         <id>description</id>
+         <value>This session was automatically saved by the Kettle Environment plugin</value>
+         <type>String</type>
+      </child>
+      <child>
+         <id>lastActiveFile</id>
+         <value></value>
+         <type>String</type>
+      </child>
+   </children>
+   <name>diethardSteinerSample</name>
+   <security>
+      <owner/>
+      <owner-permissions-list/>
+   </security>
+</element>
