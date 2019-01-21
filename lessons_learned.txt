@@ -1,0 +1,21 @@
+2019-01-21 2:00 PM
+From the outset, ENVIRONMENT_HOME anchors everything from a central point.
+For example, if we create a folder under unitTests called registeredDefects
+then said that our ENVIRONMENT_HOME=/home/bjackson/kettle-qa/registeredDefects
+the net effect of that is that with the exception of explicitly defining a 
+folder to hold CSV files, all folders will line up and the tests, datasets etc.
+will be discoverable by the dataset-plugin.
+
+
+3:43 PM The exported environment is still hardcoded to the machine it was
+designed and exported from.  So let us try to use jq to ask for the
+present working directory and update that node before maitre.sh imports it.
+
+https://stackoverflow.com/questions/24942875/change-json-file-by-bash-script
+
+5:25 PM
+Matt fixed a few bugs found while setting up the tests.  That cleared the way
+to focus on orchestration to some extent.  Thinking I need to set up a few
+versions of kettle in containers for regression testing.  Since the plugins
+are in flux, I need to make sure the containerized kettle environments will
+pick up on the changes.

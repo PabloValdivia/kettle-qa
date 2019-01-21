@@ -1,0 +1,10 @@
+{
+  "name" : "registeredDefects",
+  "environmentHomeFolder" : "/home/bjackson/src/usbrandon/kettle-qa/unitTests/registeredDefects",
+  "metaStoreBaseFolder" : "${ENVIRONMENT_HOME}",
+  "unitTestsBasePath" : "${ENVIRONMENT_HOME}",
+  "dataSetsCsvFolder" : "${ENVIRONMENT_HOME}/unit-test-datasets",
+  "enforcingExecutionInHome" : true,
+  "autoSavingSpoonSession" : true,
+  "autoRestoringSpoonSession" : true
+}
