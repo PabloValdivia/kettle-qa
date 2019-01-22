@@ -1,0 +1,3 @@
+2019/01/22 16:29:42 - Start maridb:10.3 container with testdata - Running on platform : Linux
+2019/01/22 16:29:42 - Start maridb:10.3 container with testdata - Executing command : /tmp/kettle_36a2306e-1e95-11e9-bed9-31173cb7c816shell
+2019/01/22 16:29:42 - Start maridb:10.3 container with testdata - (stdout) 9976cab6573bede6c278d56e7dd411b55737af0c702b84ef8ced826006ab31b3

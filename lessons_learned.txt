@@ -1,3 +1,19 @@
+2019-01-22 4:53 PM
+Got lauching docker containers done. Wondering if I should randomize ports incoming
+to work around potential collisions on the system running tests.
+
+- Need to file issues with Matt about
+1. Renaming dataset groups
+2. Renaming datasets
+3. The execute unit tests part is throwing a null pointer when I give it anything.
+The test name is probably tightly linked to the name of the transform.
+Saving As for your transform probably breaks that.  That's not good.
+
+Hoping with the sharp points listed to be able to redo this test.
+
+
+
+
 2019-01-21 2:00 PM
 From the outset, ENVIRONMENT_HOME anchors everything from a central point.
 For example, if we create a folder under unitTests called registeredDefects
