@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <element>
-   <id>PDI-17034_checksum_case Test</id>
+   <id>PDI-17034_checksum_case_CSV Test</id>
    <value></value>
    <type>String</type>
    <children>
@@ -31,7 +31,7 @@
       </child>
       <child>
          <id>test_type</id>
-         <value>UNIT_TEST</value>
+         <value>NONE</value>
          <type>String</type>
       </child>
       <child>
@@ -212,7 +212,7 @@
                   </child>
                   <child>
                      <id>data_set_name</id>
-                     <value>checksum_case_output</value>
+                     <value>PDI-17034_checksum_case-output</value>
                      <type>String</type>
                   </child>
                </children>
@@ -338,7 +338,7 @@
                   </child>
                   <child>
                      <id>data_set_name</id>
-                     <value>PDI-17034_checksum_case-Input</value>
+                     <value>PDI-17034_checksum_case-input</value>
                      <type>String</type>
                   </child>
                </children>
@@ -356,7 +356,7 @@
          <type>String</type>
       </child>
    </children>
-   <name>PDI-17034_checksum_case Test</name>
+   <name>PDI-17034_checksum_case_CSV Test</name>
    <security>
       <owner/>
       <owner-permissions-list/>

@@ -6,6 +6,7 @@
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -434,6 +435,62 @@
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
+    <notepad>
+      <note>Dragons in those waters:
+
+kettle-metastore project has steps that can feed this.
+
+- Test name expects the real test name without .XML ending from
+the META_STORE/pentaho/ unit tests directory.
+
+The other fields are output fields to be inspected after the step.
+- 2019-01-23</note>
+      <xloc>32</xloc>
+      <yloc>64</yloc>
+      <width>442</width>
+      <heigth>163</heigth>
+      <fontname>Ubuntu</fontname>
+      <fontsize>11</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>30</backgroundcolorred>
+      <backgroundcolorgreen>144</backgroundcolorgreen>
+      <backgroundcolorblue>255</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>This step magically asks for all tests by default.
+If you tell it the name of the test it will run one per input row.
+
+See your
+kettle-qa/unitTests/registeredDefects/metastore/pentaho/Kettle Transformation Unit Test
+
+Take off the .XML and that is the test name.</note>
+      <xloc>704</xloc>
+      <yloc>64</yloc>
+      <width>622</width>
+      <heigth>129</heigth>
+      <fontname>Ubuntu</fontname>
+      <fontsize>11</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <order>
     <hop>
@@ -442,7 +499,22 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Get file names</from>
+      <from>Metastore Reader</from>
+      <to>Filter rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Statically Defined Test Name</from>
+      <to>Execute Unit Tests</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows</from>
+      <to>element->TestName</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>element->TestName</from>
       <to>Execute Unit Tests</to>
       <enabled>Y</enabled>
     </hop>
@@ -467,7 +539,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
+      <xloc>608</xloc>
       <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
@@ -483,9 +555,9 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <test_name_input_field>uri</test_name_input_field>
+    <test_name_input_field>TestName</test_name_input_field>
     <type_to_execute>UNIT_TEST</type_to_execute>
-    <trans_name_field>transformation</trans_name_field>
+    <trans_name_field>transfile</trans_name_field>
     <unit_test_name_field>unittest</unit_test_name_field>
     <data_set_name_field>dataset</data_set_name_field>
     <step_name_field>step</step_name_field>
@@ -500,14 +572,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
+      <xloc>608</xloc>
       <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Get file names</name>
-    <type>GetFileNames</type>
+    <name>Metastore Reader</name>
+    <type>MetastoreReader</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -516,26 +588,15 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <filter>
-      <filterfiletype>all_files</filterfiletype>
-    </filter>
-    <doNotFailIfNoFile>N</doNotFailIfNoFile>
-    <rownum>N</rownum>
-    <isaddresult>Y</isaddresult>
-    <filefield>N</filefield>
-    <rownum_field/>
-    <filename_Field/>
-    <wildcard_Field/>
-    <exclude_wildcard_Field/>
-    <dynamic_include_subfolders>N</dynamic_include_subfolders>
-    <limit>0</limit>
-    <file>
-      <name>${Internal.Entry.Current.Directory}</name>
-      <filemask>ut_.*\.ktr</filemask>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-    </file>
+    <store_name_field>storeName</store_name_field>
+    <namespace_field>namespace</namespace_field>
+    <element_type_field>elementType</element_type_field>
+    <element_name_field>element</element_name_field>
+    <attribute_depth_field>depth</attribute_depth_field>
+    <attribute_path_field>path</attribute_path_field>
+    <attribute_index_field>index</attribute_index_field>
+    <attribute_type_field>type</attribute_type_field>
+    <attribute_value_field>value</attribute_value_field>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -546,7 +607,175 @@
     </remotesteps>
     <GUI>
       <xloc>96</xloc>
-      <yloc>96</yloc>
+      <yloc>352</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter rows</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to/>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>elementType</leftvalue>
+            <function>=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>Kettle Transformation Unit Test</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask/>
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>element</leftvalue>
+            <function>=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>ut_PDI-17034_db_checksum Test</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask/>
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>depth</leftvalue>
+            <function>=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>Integer</type>
+              <text>0</text>
+              <length>-1</length>
+              <precision>0</precision>
+              <isnull>N</isnull>
+              <mask>####0;-####0</mask>
+            </value>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>256</xloc>
+      <yloc>352</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Statically Defined Test Name</name>
+    <type>DataGrid</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>TestName</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>FileName</name>
+        <type>String</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <data>
+      <line>
+        <item>ut_PDI-17034_db_checksum Test</item>
+        <item>./PDI-17034_db_checksum/ut_PDI-17034_db_checksum.ktr</item>
+      </line>
+    </data>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>224</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>element->TestName</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>element</name>
+        <rename>TestName</rename>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>416</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

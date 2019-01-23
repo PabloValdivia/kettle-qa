@@ -1,3 +1,27 @@
+2019-01-23 4:43 PM
+The Execute Unit Test step demands the name given to the test to function.
+I filed a bug because if a test depends on a database for its dataset, the test won't fail
+and no failure is reported out of the Execute Unit Test step.
+
+Transaction Filename Field on the Execute Unit Test step is actually just the transformation name
+and could differ from the ktr on disk.  I need to check again to verify that.
+
+When using docker containers, I had to have some loop wait and verify the database was ready for use.
+
+
+2019-01-23 1:00 PM
+Learned 'kettle-metastore' project exists with mattcasters.
+Provides a step that will read from the metastore allowing me to filter and feed
+the test executor step that comes with pdi-dataset-plugin.
+
+By default the Execute Unit Test step runs all tests of a specified type: i.e. Unit Tests.
+So if I have multiple tests defined in my environment, it will try to run them all.
+
+I have taken the separate docker container database per test approach so far.
+This yields a standard connection name, and standardizes the table names input and output
+for each unit test regardless of what you name the actual datasets being fed for testing.
+
+
 2019-01-23 9:00 AM
 Reflecting on the past to build the future state a little bit.
 

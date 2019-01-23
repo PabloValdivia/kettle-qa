@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <element>
-   <id>GoldenDataSets</id>
+   <id>MariaDB_testData</id>
    <value></value>
    <type>String</type>
    <children>
       <child>
          <id>database_name</id>
-         <value></value>
+         <value>MariaDB_testData</value>
          <type>String</type>
       </child>
       <child>
          <id>description</id>
-         <value></value>
+         <value>Test data from MariaDB 10.3 container</value>
          <type>String</type>
       </child>
       <child>
          <id>group_type</id>
-         <value>CSV</value>
+         <value>Database</value>
          <type>String</type>
       </child>
       <child>
          <id>schema_name</id>
-         <value></value>
+         <value>testdata</value>
          <type>String</type>
       </child>
       <child>
@@ -30,7 +30,7 @@
          <type>String</type>
       </child>
    </children>
-   <name>GoldenDataSets</name>
+   <name>MariaDB_testData</name>
    <security>
       <owner/>
       <owner-permissions-list/>

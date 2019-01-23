@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <element>
-   <id>checksum_case_output</id>
+   <id>PDI-17034 db_checksum-input</id>
    <value></value>
    <type>String</type>
    <children>
       <child>
          <id>group_name</id>
-         <value>GoldenDataSets</value>
+         <value>MariaDB_testData</value>
          <type>String</type>
       </child>
       <child>
          <id>description</id>
-         <value></value>
+         <value>Input data for PDI-17034 case</value>
          <type>String</type>
       </child>
       <child>
@@ -36,7 +36,7 @@
                   </child>
                   <child>
                      <id>field_length</id>
-                     <value>10</value>
+                     <value>255</value>
                      <type>String</type>
                   </child>
                   <child>
@@ -73,7 +73,7 @@
                   </child>
                   <child>
                      <id>field_length</id>
-                     <value>100</value>
+                     <value>255</value>
                      <type>String</type>
                   </child>
                   <child>
@@ -110,17 +110,17 @@
                   </child>
                   <child>
                      <id>field_length</id>
-                     <value>4</value>
+                     <value>9</value>
                      <type>String</type>
                   </child>
                   <child>
                      <id>field_type</id>
-                     <value>2</value>
+                     <value>5</value>
                      <type>String</type>
                   </child>
                   <child>
                      <id>field_precision</id>
-                     <value>-1</value>
+                     <value>0</value>
                      <type>String</type>
                   </child>
                   <child>
@@ -147,7 +147,7 @@
                   </child>
                   <child>
                      <id>field_length</id>
-                     <value>7</value>
+                     <value>255</value>
                      <type>String</type>
                   </child>
                   <child>
@@ -167,89 +167,15 @@
                   </child>
                </children>
             </child>
-            <child>
-               <id>4</id>
-               <value></value>
-               <type>String</type>
-               <children>
-                  <child>
-                     <id>field_comment</id>
-                     <value></value>
-                     <type>String</type>
-                  </child>
-                  <child>
-                     <id>column_name</id>
-                     <value>ID_UNICO</value>
-                     <type>String</type>
-                  </child>
-                  <child>
-                     <id>field_length</id>
-                     <value>30</value>
-                     <type>String</type>
-                  </child>
-                  <child>
-                     <id>field_type</id>
-                     <value>2</value>
-                     <type>String</type>
-                  </child>
-                  <child>
-                     <id>field_precision</id>
-                     <value>-1</value>
-                     <type>String</type>
-                  </child>
-                  <child>
-                     <id>field_name</id>
-                     <value>ID_UNICO</value>
-                     <type>String</type>
-                  </child>
-               </children>
-            </child>
-            <child>
-               <id>5</id>
-               <value></value>
-               <type>String</type>
-               <children>
-                  <child>
-                     <id>field_comment</id>
-                     <value></value>
-                     <type>String</type>
-                  </child>
-                  <child>
-                     <id>column_name</id>
-                     <value>COD_UNICO</value>
-                     <type>String</type>
-                  </child>
-                  <child>
-                     <id>field_length</id>
-                     <value>32</value>
-                     <type>String</type>
-                  </child>
-                  <child>
-                     <id>field_type</id>
-                     <value>2</value>
-                     <type>String</type>
-                  </child>
-                  <child>
-                     <id>field_precision</id>
-                     <value>-1</value>
-                     <type>String</type>
-                  </child>
-                  <child>
-                     <id>field_name</id>
-                     <value>COD_UNICO</value>
-                     <type>String</type>
-                  </child>
-               </children>
-            </child>
          </children>
       </child>
       <child>
          <id>table_name</id>
-         <value>PDI-17034_checksum_case-Output</value>
+         <value>input</value>
          <type>String</type>
       </child>
    </children>
-   <name>checksum_case_output</name>
+   <name>PDI-17034 db_checksum-input</name>
    <security>
       <owner/>
       <owner-permissions-list/>

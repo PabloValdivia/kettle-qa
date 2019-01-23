@@ -473,8 +473,8 @@ You disable these steps after using them to initially populate the database.
 Then you would use mysqldump to create a SQL file to put in the
 MariaDB specific init directory where a new MariaDB database container will
 populate itself with those SQL files in alphabetical order.</note>
-      <xloc>0</xloc>
-      <yloc>160</yloc>
+      <xloc>192</xloc>
+      <yloc>320</yloc>
       <width>517</width>
       <heigth>180</heigth>
       <fontname>Ubuntu</fontname>
@@ -494,7 +494,7 @@ populate itself with those SQL files in alphabetical order.</note>
     </notepad>
   </notepads>
   <connection>
-    <name>MariaDB_Test_Data</name>
+    <name>MariaDB_testData</name>
     <server>localhost</server>
     <type>MARIADB</type>
     <access>Native</access>
@@ -562,12 +562,12 @@ populate itself with those SQL files in alphabetical order.</note>
     </hop>
     <hop>
       <from>Data Grid</from>
-      <to>mariadb_testdata.source</to>
+      <to>mariadb_testdata.input</to>
       <enabled>N</enabled>
     </hop>
     <hop>
       <from>Add a checksum</from>
-      <to>mariadb_testdata.goldenoutput</to>
+      <to>mariadb_testdata.output</to>
       <enabled>N</enabled>
     </hop>
   </order>
@@ -601,8 +601,8 @@ populate itself with those SQL files in alphabetical order.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
-      <yloc>64</yloc>
+      <xloc>576</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -687,8 +687,8 @@ populate itself with those SQL files in alphabetical order.</note>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>448</xloc>
-      <yloc>64</yloc>
+      <xloc>416</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -865,8 +865,8 @@ N/A5023</item>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>288</xloc>
-      <yloc>64</yloc>
+      <xloc>256</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -915,13 +915,13 @@ N/A5023</item>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>800</xloc>
-      <yloc>64</yloc>
+      <xloc>768</xloc>
+      <yloc>96</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>mariadb_testdata.goldenoutput</name>
+    <name>mariadb_testdata.input</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -931,9 +931,9 @@ N/A5023</item>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>MariaDB_Test_Data</connection>
+    <connection>MariaDB_testData</connection>
     <schema>testdata</schema>
-    <table>goldenoutput</table>
+    <table>input</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -959,13 +959,13 @@ N/A5023</item>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
-      <yloc>384</yloc>
+      <xloc>256</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>mariadb_testdata.source</name>
+    <name>mariadb_testdata.output</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -975,9 +975,9 @@ N/A5023</item>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>MariaDB_Test_Data</connection>
+    <connection>MariaDB_testData</connection>
     <schema>testdata</schema>
-    <table>source</table>
+    <table>output</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -1003,8 +1003,8 @@ N/A5023</item>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>96</xloc>
-      <yloc>384</yloc>
+      <xloc>576</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

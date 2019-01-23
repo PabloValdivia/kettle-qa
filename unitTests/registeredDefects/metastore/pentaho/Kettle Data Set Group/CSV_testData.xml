@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <element>
-   <id>GoldenDatasetMariaDB</id>
+   <id>CSV_testData</id>
    <value></value>
    <type>String</type>
    <children>
       <child>
          <id>database_name</id>
-         <value>docker-mariadb</value>
+         <value></value>
          <type>String</type>
       </child>
       <child>
@@ -16,12 +16,12 @@
       </child>
       <child>
          <id>group_type</id>
-         <value>Database</value>
+         <value>CSV</value>
          <type>String</type>
       </child>
       <child>
          <id>schema_name</id>
-         <value>testdata</value>
+         <value></value>
          <type>String</type>
       </child>
       <child>
@@ -30,7 +30,7 @@
          <type>String</type>
       </child>
    </children>
-   <name>GoldenDatasetMariaDB</name>
+   <name>CSV_testData</name>
    <security>
       <owner/>
       <owner-permissions-list/>
