@@ -1,3 +1,66 @@
+2019-01-23 9:00 AM
+Reflecting on the past to build the future state a little bit.
+
+Start a docker container for a database, passing it parameters for port -p 330X:3306, 
+bind or volume mounts -v, daemonized -d, network to use, or create if doesn't exist.
+The job entry would capture the SHA256 so that the kettle job could cause it to be stopped
+'docker stop ${container_sha256}' - Errors collected if exist.
+
+-- Wondering how creating the source data and golden sets could be made easier?
+- I made a bash script to run a container to dump out the .sql files expected by
+many databases for putting in a blessed init directory that they run in alpha-sort order
+when spinning up for the first time.  Think totally disposable database containers.
+That helps; but you still need to start 'A' container first so you can plant your data in it
+by creating some form of Table Output from both ends of your stream; then disable those.
+After that you need to dump it out, and place it appropriately so the docker spin up
+will pick it up.   
+
+- shared.xml and KETTLE_HOME.....  
+So the nice thing about unit tests is you start getting META_DATA for it separated out
+from the local environment, but the instant you bring connections into this standard 
+framework; it brings in the idea of shared.xml, otherwise you are burying connection details
+across a set of tests, which would be bad because it could have a lot of variation.
+Fortunately we can specify the KETTLE_HOME and all of the associated baggage will follow.
+Solution ideas:
+1. Specify KETTLE_HOME so we can tote around a 'test kettle config piece' separate from the environment.
+2. Create a few standard names for database types and configurations
+   - MySQL_testData 3306
+   - MariaDB_testData 3306
+   - PosgreSQL_testData 5432
+   - Vertica_testData 5433
+   - MonetDB_testData 50000
+   - MSSQL_testData (Linux container) 1433
+3. To avoid collisions of tests running in parallel, we could randomize the ingress port. 
+'docker inspect' returns consistent JSON about running with standard tags, so given a SHA256, we could let a stateless step discover the details.
+Not sure when we are allowed to tell kettle about a different port for database when running tests.  Perhaps the test framework swaps those connections out
+before initialization so that the randomized docker container database's port could be discovered before it was used.
+
+-- Synchronizing the planets.
+1. Transformation Name
+2. Data Set Group Name
+3. Data Set Name
+4. Unit Test Name
+
+The above 4 need to be perfectly tied. It has been difficult for me to both discover and try to set a standard
+when renaming is not possible. I have to delete and re-create, and repopulate.  The CSV injester is not nearly as robust as the CSV Input step in kettle.
+The short-coming makes it less robust at handling the crap that could go in as source data.  This means that you would have to have data that is pretty vanilla.
+Meaning that there can't be any strange bytes like newline characters or control characters in the stream.  If you were trying to test the ability of kettle
+to deal with bad data, that's not really helpful in current state.  The apparent solution is to use the database method becasue the input/outputs in kettle
+are robust enough to load the 'source' test data with crappy data faithfully.
+
+I see need in the future for the following
+1. A dialog that shows on a single screen several columns 'Data Groups', 'Data Sets'; where we can rename and remap those to our liking in a central spot.
+2. A dialog that will show all existing Unit Tests the environment could know about and show indication of if the ktr it is mapped to exists or not.
+If the mapping is not present to a KTR, you could type in OR 'browse' to the ktr and select it.  It will then show green if the newly married unit test and source/dest inputs still match,
+otherwise it will show yellow, signifying that the test/ktr marriage is successful, but the user needs to go fix the mapping of data sets and to inputs and outputs in the transformation.
+
+-- Maitre
+Importing an environment from JSON is nice, but the fall down spot is that there is no detection if the path pointed to by the environment exists.
+Maybe a test for existance, fail by default but --force option to proceed (maybe you unzip your environment bits later?).  Also we could allow --import-environment with --environment-override-path 
+to override the path in JSON.  That way the user does not have to use script magic to replace the path with what they mean beforehand.
+
+
+
 2019-01-22 4:53 PM
 Got lauching docker containers done. Wondering if I should randomize ports incoming
 to work around potential collisions on the system running tests.
@@ -10,8 +73,6 @@ The test name is probably tightly linked to the name of the transform.
 Saving As for your transform probably breaks that.  That's not good.
 
 Hoping with the sharp points listed to be able to redo this test.
-
-
 
 
 2019-01-21 2:00 PM
